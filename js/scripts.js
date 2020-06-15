@@ -13,8 +13,27 @@ AddressBook.prototype.addContact = function(contact) {
 }
 
 AddressBook.prototype.assignId = function() {
-  this.currentId ++;
+  this.currentId++;
   return this.currentId;
+}
+
+AddressBook.prototype.findContact = function(id) {
+  for (let i=0; i < this.contacts.length; i++) {
+    if (this.contacts[i].id == id) {
+      return this.contacts[i];
+    }
+  }
+  return false;
+}
+
+AddressBook.prototype.deleteContact = function(id) {
+  for (let i=0; i < this.contacts.length; i++) {
+    if (this.contacts[i].id == id) {
+      delete this.contacts[i];
+      return true;
+    }
+  }
+  return false;
 }
 
   // End Business Logic for Address Book
