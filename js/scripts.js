@@ -4,6 +4,7 @@
 
 function AddressBook() {
   this.contacts = []
+  this.currentID = 0;
 }
 
 AddressBook.prototype.addContact = function(contact) {
