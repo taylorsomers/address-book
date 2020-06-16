@@ -86,6 +86,11 @@ function attachContactListeners() {
   $("ul#contacts").on("click", "li", function() {
     showContact(this.id);
   });
+  $("#buttons").on("click", ".delete-button", function() {
+    addressBook.deleteContact(this.id);
+    $("#show-contact").hide();
+    displayContactDetails(addressBook);
+  });
 }
 
 $(document).ready(function() {
