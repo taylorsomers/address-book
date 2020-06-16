@@ -3,7 +3,7 @@
   // Business Logic for Address Book:
 
 function AddressBook() {
-  this.contacts = []
+  this.contacts = [];
   this.currentId = 0;
 }
 
@@ -13,12 +13,12 @@ AddressBook.prototype.addContact = function(contact) {
 }
 
 AddressBook.prototype.assignId = function() {
-  this.currentId++;
+  this.currentId += 1;
   return this.currentId;
 }
 
 AddressBook.prototype.findContact = function(id) {
-  for (let i=0; i < this.contacts.length; i++) {
+  for (let i=0; i< this.contacts.length; i++) {
     if (this.contacts[i]) {
       if (this.contacts[i].id == id) {
         return this.contacts[i];
@@ -29,7 +29,7 @@ AddressBook.prototype.findContact = function(id) {
 }
 
 AddressBook.prototype.deleteContact = function(id) {
-  for (let i=0; i < this.contacts.length; i++) {
+  for (let i=0; i< this.contacts.length; i++) {
     if (this.contacts[i]) {
       if (this.contacts[i].id == id) {
         delete this.contacts[i];
@@ -61,6 +61,15 @@ Contact.prototype.fullName = function() {
 // UI Logic
 
 let addressBook = new AddressBook();
+
+function displayContactDetails(addressBookToDisplay) {
+  let contactsList = $("ul#contacts");
+  let htmlForContactInfo = "";
+  addressBookToDisplay.contacts.forEach(function(contact) {
+    htmlForContactInfo += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + "</li>";
+  });
+  contactsList.html(htmlForContactInfo);
+}
 
 $(document).ready(function() {
   $("form#new-contact").submit(function(event) {
