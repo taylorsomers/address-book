@@ -98,15 +98,17 @@ $(document).ready(function() {
   attachContactListeners(addressBook);
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
-    const inputtedFirstName = $("input#new-first-name").val();
-    const inputtedLastName = $("input#new-last-name").val();
-    const inputtedPhoneNumber = $("input#new-phone-number").val();
+    let inputtedFirstName = $("input#new-first-name").val();
+    let inputtedLastName = $("input#new-last-name").val();
+    let inputtedPhoneNumber = $("input#new-phone-number").val();
+    let inputtedEmailAddress = $("input#new-email-address").val();
 
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#new-phone-number").val("");
+    $("input#new-email-address").val("");
 
-    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmailAddress);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
   });
